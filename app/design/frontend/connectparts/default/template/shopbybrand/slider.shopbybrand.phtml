@@ -1,0 +1,93 @@
+<?php
+$_helper = Mage::helper('catalog/output');
+$brands  = $this->getSliderBrands();
+
+if($brands){ ?>
+
+<div class="row slot-machine">
+    <div class="widget-title">
+        <h2>Marcas Mais Vendidas</h2>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 marcas-wrapper ">
+        <a href="#" class="cima">cima</a>
+        <a href="#" class="baixo">Baixo</a>
+        <div class="marcas-mascara">
+            <ul class="marcas">
+                <?php    foreach ($brands as $key => $brand) {
+                    $image = Mage::helper("shopbybrand")->getUrlImage($brand->getId()) ."/".  $brand->getImage();
+                ?>
+                    <li class="marca<?php echo $brand->getId()?>">
+                        <div class="box-banner">
+                            <a href="<?php echo $this->getBrandUrl($brand)?>">
+                                <img width="166" height="90" id="<?php echo $image?>" alt="icone 02 - Carrossel de marcas Stetsom" src="<?php echo $image ?>" complete="complete"></a>
+                        </div>
+                    </li><!-- Stetsom -->
+
+                <?php
+                } ?>
+            </ul>
+
+        </div>
+    </div>
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        <div class="prat-mascara">
+            <ul class="prat">
+                <?php   
+                foreach ($brands as $key => $brand) {
+                $productIds = Mage::helper('shopbybrand/brand')->getProductIdsByBrand($brand);
+                 ?>
+                    <li>
+                        <div class="box-banner">
+                            <div class="row" style="margin-right:0; margin-left:0;">
+                                <?php if($productIds): $_productIds = explode(",", $productIds);?>
+                                <?php foreach ($_productIds as $key => $id) : ?>
+                                    <?php
+                                    if($id):
+                                     $_product = Mage::getModel("catalog/product")->load($id); ?>
+                                 <?php //echo $product->getName() . "<br />"; ?>
+                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 item-product">
+                                    <!-- <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>"> -->
+                                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+                                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                                            <?php $_imgSize = 130; ?>
+                                            <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                                 src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($_imgSize); ?>"
+                                                 alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="img-responsive" />
+                                        </a>
+                                        <div class="product-info">
+                                            
+                                             
+                                            <?php echo $this->getPriceHtml($_product, true) ?>
+                                            <?php if($_product->getRatingSummary()): ?>
+                                            <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                                            <?php endif; ?>
+                                            <div class="actions">
+                                                <?php if($_product->isSaleable() && !$_product->canConfigure()): ?>
+                                                    
+                                                <?php elseif($_product->isSaleable()): ?>
+                                                    <a title="<?php echo $this->__('View Details') ?>" class="button" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a>
+                                                <?php else: ?>
+                                                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                                <?php endif; ?>
+                                                
+                                            </div>
+                                        </div>
+                                    <!-- </li> -->
+                                </div>
+                                <?php 
+                                endif;
+                                endforeach; ?>
+                            <?php endif ?>
+                            </div>
+                        </div>
+                    </li><!-- Stetsom -->
+                <?php
+                } ?>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<?php
+}
+?>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="footer">
+            <block type="core/template" name="footer.search" as="footerSearch" template="catalogsearch/footer.search.phtml"/>
+            <block type="cms/block" name="institucional"><action method="setBlockId"><block_id>institucional</block_id></action></block>
+            <block type="cms/block" name="reconhecimento"><action method="setBlockId"><block_id>reconhecimento</block_id></action></block>
+            <block type="cms/block" name="pagamento"><action method="setBlockId"><block_id>pagamento</block_id></action></block>
+            <block type="cms/block" name="footer_social"><action method="setBlockId"><block_id>footer_social</block_id></action></block>
+        </reference>
+    </default>
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/jquery.jcarousel.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jcarousel.responsive.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/custom.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/jcarousel.responsive.css</name></action>
+        </reference>
+        <reference name="content">
+            <block type="catalog/layer_view" name="slider_category" before="-" template="catalog/category/slider.category.phtml" />
+            <block type="newsletter/subscribe" name="home.newsletter" as="homenewsletter" after="ibanner_content_top" template="newsletter/home.subscribe.phtml">
+            <block type="cms/block" name="homepromo"><action method="setBlockId"><block_id>homepromo</block_id></action></block>
+            </block>
+            <block type="shopbybrand/shopbybrand" name="slider_brand" template="shopbybrand/slider.shopbybrand.phtml" />
+            <block type="catalogextensions/newproduct_home_list"  after="home.newsletter" name="newproduct_list" template="catalogextensions/home_newproduct.phtml" />
+           <!--  <block type="catalogextensions/promotional_home_list" after="home.newsletter" name="promotional_list" template="catalogextensions/home_promotional.phtml" /> -->
+            <block type="catalogextensions/bestsellers_home_list" after="newproduct_list" name="bestsellers_list" template="catalogextensions/home_bestsellers.phtml" />
+            <block type="cms/block" name="hatcar_banner" after="bestsellers_list"><action method="setBlockId"><block_id>hatcar_banner</block_id></action></block>
+
+            <block type="catalogextensions/featured_home_list" after="slider_brand" name="featured_list" template="catalogextensions/home_featured.phtml" />
+        </reference>
+    </cms_index_index>
+    <catalog_category_default>
+        <remove name="breadcrumbs" />
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+        </reference>
+        <reference name="content01">
+            <block type="newsletter/subscribe" name="catalog.newsletter" as="catalognewsletter" after="-" template="newsletter/home.subscribe.phtml">
+                <block type="cms/block" name="homepromo"><action method="setBlockId"><block_id>homepromo</block_id></action></block>
+            </block>
+            <block type="catalog/category_view" name="catalog.image" as="catalogimage" after="catalog.newsletter" template="catalog/category/category.images.phtml" />
+        </reference>
+
+        <reference name="left">
+            <remove name="catalog.leftnav" />
+        </reference>
+
+    </catalog_category_default>
+    <catalog_product_view>
+        <remove name="breadcrumbs" />
+    </catalog_product_view>
+</layout>

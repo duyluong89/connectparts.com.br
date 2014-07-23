@@ -1,0 +1,44 @@
+/********Css For Category Sidebar Navigation ************/
+.block-category-nav{border:0 none; margin-bottom: 0;}
+.block-category-nav .block-title{background: none repeat scroll 0 0 #413C3C;
+border-bottom: 3px solid #DF6735;
+border-radius: 3px 3px 0 0;
+color: #FFFFFF;
+font-size: 12px;
+margin: 0px;
+padding: 10px 20px 0 20px;
+position: relative;
+text-align: center;
+top: 0px;
+height: 40px;}
+.block-category-nav .block-title strong{color: #FFFFFF; display: block; padding:0; font: bold 13px/16px Arial,Helvetica,sans-serif; min-height: 16px;text-transform: capitalize;}
+.block-category-nav .block-content{background:#FFFFFF; border:1px solid #DDDDDD; border-top:0 none; padding:5px 10px;}
+#sidenav{}
+#sidenav li{border-bottom:1px solid #cacaca; padding:2px 0;}
+#sidenav li.last{border:0 none;}
+#sidenav li a{color: #7E7E7E;
+display: block;
+font-size: 12px;padding-left: 25px;
+text-transform: lowercase;
+text-decoration: none;}
+#sidenav li a:hover{color:#f7931d;/*  text-decoration:underline; */}
+/* Level 0 */
+#sidenav li.level-top a.level-top{ background: url("../../../images/borda-side.gif") no-repeat scroll left 2px transparent;
+color: #4C4646;
+display: block;
+font-size: 13px;
+font-weight: bold;
+margin: 10px 0 4px 15px;
+padding-left: 8px;
+text-transform: uppercase;
+/* width: 160px; */
+clear: both;}
+#sidenav li ul.level0{padding-left:10px;}
+#sidenav li ul.level0 li{border-bottom:none}
+#sidenav li ul.level0 li.last{border:0 none;}
+/* Level 1 */
+#sidenav li ul li ul{padding-left:10px;}
+#sidenav li ul li ul li a{color: #7E7E7E;
+display: block;
+font-size: 12px;
+text-decoration: none;}

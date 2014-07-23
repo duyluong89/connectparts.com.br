@@ -1,0 +1,23 @@
+<?php 
+
+$categories = Mage::getModel('catalog/category')->getCollection()
+	->addAttributeToSelect(array('id','name','url_key','url','thumbnail','name_on_slider'))
+	->addAttributeToFilter('show_on_slider','14')
+	->addUrlRewriteToResult()
+	->addAttributeToFilter('is_active','1');
+if ($categories->count()) : ?>
+<div class="jcarousel-wrapper">
+	<span>Encontre a peça para o seu carro:</span>
+    <div class="jcarousel">
+		<ul>
+		<?php foreach ($categories as $key => $category) : ?>
+			<li><a href="<?php echo $category->getUrl($category); ?>"><img src="<?php echo Mage::getBaseUrl('media').'catalog/category/'.$category->getThumbnail()  ?>" /><?php echo $category->getData('name_on_slider');?></a></li>		
+		<?php endforeach; ?>
+		</ul>
+		<!-- <div class="jcarousel-prev jcarousel-prev-horizontal" style="display: block;"></div>
+		<div class="jcarousel-next jcarousel-next-horizontal" style="display: block;"></div> -->
+		<a href="#" class="jcarousel-control-prev jcarousel-prev-horizontal"></a>
+        <a href="#" class="jcarousel-control-next jcarousel-next-horizontal"></a>
+	</div>
+</div>
+<?php endif; ?>

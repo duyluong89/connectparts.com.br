@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Dez_ProductSlider>
+      <version>0.1.0</version>
+    </Dez_ProductSlider>
+  </modules>
+  <global>
+    <helpers>
+      <productslider>
+        <class>Dez_ProductSlider_Helper</class>
+      </productslider>
+    </helpers>
+  </global>
+</config>

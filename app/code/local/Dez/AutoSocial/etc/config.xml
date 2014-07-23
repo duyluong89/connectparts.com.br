@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Dez_AutoSocial>
+      <version>0.1.0</version>
+    </Dez_AutoSocial>
+  </modules>
+  <global>
+    <helpers>
+      <autosocial>
+        <class>Dez_AutoSocial_Helper</class>
+      </autosocial>
+    </helpers>
+	<models>
+	  <autosocial>
+		<class>Dez_AutoSocial_Model</class>
+		<resourceModel>autosocial_mysql4</resourceModel>
+	  </autosocial>
+	</models>
+  </global>    
+    <crontab>
+        <jobs>            
+			<autosocial_postfacebook>
+                <schedule><cron_expr>*/1 * * * *</cron_expr></schedule>
+                <run><model>autosocial/cron::postFacebook</model></run>
+            </autosocial_postfacebook>            
+			<autosocial_posttwitter>
+                <schedule><cron_expr>*/45 * * * *</cron_expr></schedule>
+                <run><model>autosocial/cron::postTwitter</model></run>
+            </autosocial_posttwitter>
+        </jobs>
+    </crontab>
+</config> 

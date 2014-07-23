@@ -1,0 +1,14 @@
+<?php
+ 	$_helper    = $this->helper('catalog/output');
+	$_category  = $this->getCurrentCategory();
+	$_imgHtml   = '';
+	if ($_imgUrl = $_category->getImageUrl()) {
+		$cat = Mage::getModel("catalog/category")->load($_category->getId());
+		$link = $cat->getData("link_image_category");
+		$_imgHtml = '<p class="category-image"><a href="'.$link.'"><img src="'.$_imgUrl.'" alt="'.$this->escapeHtml($_category->getName()).'" class="img-responsive" title="'.$this->escapeHtml($_category->getName()).'" /></a></p>';
+	    $_imgHtml = $_helper->categoryAttribute($_category, $_imgHtml, 'image');
+	}
+?>
+<?php if($_imgUrl): ?>
+    <?php echo $_imgHtml ?>
+<?php endif; ?>

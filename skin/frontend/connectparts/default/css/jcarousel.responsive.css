@@ -1,0 +1,155 @@
+.jcarousel-wrapper {
+    border: 1px solid #dedede;
+    margin: 0 0 10px 0;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 9px;
+    padding: 5px 0;
+    background-color: #fff;
+    background-image: -moz-linear-gradient(center top , #f3f3f3, #fff);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-style: solid;
+    border-width: 1px;
+}
+.jcarousel-wrapper span {
+display: block;
+padding: 5px 0 4px 25px;
+}
+/** Carousel **/
+
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.jcarousel li {
+    width: 200px;
+    float: left;
+    border: 1px solid #fff;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.jcarousel img {
+    display: block;
+    max-width: 100%;
+    height: auto !important;
+}
+
+/** Carousel Controls **/
+
+.jcarousel-control-prev,
+.jcarousel-control-next {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background: #4E443C;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 1px #000;
+    font: 24px/27px Arial, sans-serif;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0 0 4px #F0EFE7;
+    -moz-box-shadow: 0 0 4px #F0EFE7;
+    box-shadow: 0 0 4px #F0EFE7;
+}
+
+.jcarousel-control-prev {
+    left: 15px;
+}
+
+.jcarousel-control-next {
+    right: 15px;
+}
+
+/** Carousel Pagination **/
+
+.jcarousel-pagination {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    margin: 0;
+}
+
+.jcarousel-pagination a {
+    text-decoration: none;
+    display: inline-block;
+
+    font-size: 11px;
+    height: 10px;
+    width: 10px;
+    line-height: 10px;
+
+    background: #fff;
+    color: #4E443C;
+    border-radius: 10px;
+    text-indent: -9999px;
+
+    margin-right: 7px;
+
+
+    -webkit-box-shadow: 0 0 2px #4E443C;
+    -moz-box-shadow: 0 0 2px #4E443C;
+    box-shadow: 0 0 2px #4E443C;
+}
+
+.jcarousel-pagination a.active {
+    background: #4E443C;
+    color: #fff;
+    opacity: 1;
+
+    -webkit-box-shadow: 0 0 2px #F0EFE7;
+    -moz-box-shadow: 0 0 2px #F0EFE7;
+    box-shadow: 0 0 2px #F0EFE7;
+}
+.jcarousel-next-horizontal, .jcarousel-prev-horizontal {
+position: absolute;
+top: 1px;
+width: 18px;
+height: 100%;
+cursor: pointer;border:none; -webkit-box-shadow:none;box-shadow: none;
+}
+.jcarousel-next-horizontal {
+right: 12px;display: block;text-indent: -999px;
+background: #FFF url("../images/seta.png") no-repeat -18px 15px;
+}
+.jcarousel-prev-horizontal {
+left: 5px;
+display: block;text-indent: -999px; 
+background: #FFF url("../images/seta.png") no-repeat 0 15px;
+}
+.carousel-carros {
+    border: 1px solid #dedede;
+    margin: 0 0 10px 0;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 9px;
+    padding: 5px 0;
+    background-color: #fff;
+    background-image: -moz-linear-gradient(center top , #f3f3f3, #fff);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-style: solid;
+    border-width: 1px;
+}
+.jcarousel ul li a{display: block;text-align: center;color:#666; text-transform: none;}
+.jcarousel ul li a:hover{text-decoration: none;}

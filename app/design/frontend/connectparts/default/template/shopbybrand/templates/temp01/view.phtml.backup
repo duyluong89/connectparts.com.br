@@ -1,0 +1,91 @@
+﻿<?php 
+/**
+ * Magestore
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the Magestore.com license that is
+ * available through the world-wide-web at this URL:
+ * http://www.magestore.com/license-agreement.html
+ * 
+ * DISCLAIMER
+ * 
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ * 
+ * @category    Magestore
+ * @package     Magestore_Shopbybrand
+ * @copyright   Copyright (c) 2012 Magestore (http://www.magestore.com/)
+ * @license     http://www.magestore.com/license-agreement.html
+ */
+
+/**
+ * Shopbybrand template
+ * 
+ * @see Magestore_Shopbybrand_Block_Shopbybrand
+ */
+$brand = $this->getBrand();
+$displayBrandSignup = $this->displayBrandSignup();
+$displayBrandSearch = $this->displayBrandsearch();
+?>
+<!--link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/shopbybrand/templates/temp01/default.css'); ?>" media="all" /-->
+<div class="shopbybrand_view">
+	<div class="brand-left" style="width:<?php if($displayBrandSignup==0&&$displayBrandSearch==0): ?> 100%<?php else: ?> 68%;<?php endif;?>">
+	<div class="page-title category-title">
+        <h1><?php echo $this->__('About  ').$brand->getName();?></h1>
+    </div>
+    <div class="brand-description">
+         <div class="img"><?php echo $this->getBrandImageUrl();?>
+		 <span><?php echo $brand->getName();?></span></div>
+		<p>
+            <?php echo $brand->getDescription();?>
+        </p>
+       
+    </div>
+    
+    <div class="manufacturer-product-list">
+		<?php 
+			echo $this->getProductListHtml() ;
+		?>
+    </div>
+	</div>
+	<div class="brand-right">
+       
+        <?php if ($displayBrandSignup): ?>
+    <div class="brand-subcribers">
+		<h1 class="block-title"><?php echo $this->__('Sign up for new style') ?></h1>
+        <div class="subcribers-content">
+		<form id="brand-subcribers-form" method="post" action="<?php echo $this->getUrl("shopbybrand/index/subscribe") ?>">
+            <p><?php echo $this->__('Be "in-the-know" when we add new styles of <span> %s </span> to our website! Simply sign up and we\'ll notify you.',$brand->getName()); ?></p>
+            <input type="hidden" name="brand_id" value="<?php echo $brand->getBrandId() ?>">
+            <input id="brand-subcribers-input" name="email" onfocus="if(this.value=='Type your email adress') this.value=''" onblur="if(this.value=='') this.value='Type your email adress'" class="input-text-subcribers input-text required-entry validate-email" title="<?php echo $this->__('Type your email adress') ?>" value="<?php echo $this->__('Type your email adress') ?>" type="text">
+            <button id="subcribers"><span><span><?php echo $this->__('NOTIFY ME OF STYLES'); ?></span></span></button>
+            <div></div>
+            <p><?php echo $this->__('We respects your privacy. We don\'t rent or sell your personal information to anyone.'); ?></p>
+        </form>
+		</div>
+    </div>
+        <?php endif; ?>
+        <?php if($this->displayShopby()): ?>
+            <?php echo $this->getChildHtml('shopbybrand-leftnav') ?>
+        <?php endif; ?>
+        <?php if ($displayBrandSearch): ?>
+    <div class="brand-search">
+        <form id="brand-input-search-form" method="post" action="<?php echo $this->getCharSearchUrl('all').'#shopbybrand_char_filter'; ?>">
+            <p><?php echo $this->__('Please type your keyword') ?></p>
+            <input id="filterInput" name="input" onfocus="if(this.value=='Enter Keyword') this.value=''" onblur="if(this.value=='') this.value='Enter Keyword'" class="input-text-search" title="<?php echo $this->__('Enter Keyword') ?>" value="<?php echo $this->__('Enter Keyword') ?>" type="text">
+            <button id="search" type="submit"><span><span><?php echo $this->__('Search'); ?></span></span></button>
+            <ul>
+                <?php 
+            $lists = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'W', 'U', 'V', 'X', 'Y', 'Z');
+            foreach ($lists as $value) {
+            ?>
+                <li style="float: left; width: 20px;"><a href="<?php echo $this->getCharSearchUrl($value) ?>"><?php echo $value ?></a></li>
+            <?php } ?>
+            </ul>
+        </form>
+    </div>
+        <?php endif; ?>
+        
+    </div>
+</div>  
