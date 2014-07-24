@@ -52,7 +52,7 @@
                 </div>
                 <?php echo $this->getChildHtml('media') ?>
                 <div class="sharing-social"><?php echo $this->getChildHtml('sharing') ?></div>
-                <div class="product-collateral toggle-content tabs">
+                <div id="focusthis" class="product-collateral toggle-content tabs">
                     <?php if ($detailedInfoGroup = $this->getChildGroup('detailed_info', 'getChildHtml')):?>
                         <dl id="collateral-tabs" class="collateral-tabs">
                             <?php foreach ($detailedInfoGroup as $alias => $html):?>
@@ -81,7 +81,7 @@
                 <div class="product-info">
                     <?php //echo $this->getPriceHtml($_product, true) ?>
                     <?php if($_product->getRatingSummary()): ?>
-                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?>
                     <?php endif; ?>
                         <?php if($_product->price!=0): ?>
                         <?php echo $this->getPriceHtml($_product, true) ?>
@@ -104,7 +104,7 @@
 
 
                 <div class="extra-info">
-                    <?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
+                    <?php //echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
                     <?php echo $this->getChildHtml('product_type_availability'); ?>
                 </div>
 
@@ -152,7 +152,7 @@
             </div>
             <!--TuyenLN add product focus-->
             <div class="rating-focus">
-                    <a href="#">Veja as opiniões de quem já comprou este produto e tire suas dúvidas</a>
+                    <a href="#focusthis">Veja as opiniões de quem já comprou este produto e tire suas dúvidas</a>
             </div>    
 
             <?php echo $this->getChildHtml('related_products') ?>
