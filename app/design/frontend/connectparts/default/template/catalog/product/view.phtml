@@ -72,10 +72,36 @@
                 </div>
 
                 <div class="price-info">
-                    <?php echo $this->getPriceHtml($_product); ?>
+                    <?php //echo $this->getPriceHtml($_product); ?>
                     <?php echo $this->getChildHtml('bundle_prices') ?>
                     <?php echo $this->getTierPriceHtml() ?>
                 </div>
+
+
+                <div class="product-info">
+                    <?php //echo $this->getPriceHtml($_product, true) ?>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php endif; ?>
+                        <?php if($_product->price!=0): ?>
+                        <?php echo $this->getPriceHtml($_product, true) ?>
+                        
+                         <!--PARCELAS duas ocorrencias nesta página-->
+                          <?php
+                        $_coreHelper = $this->helper('core');
+                        $_product->load( $_product->getId() );
+                        $vezes = $_product->getResource()->getAttribute('economize')->getFrontend()->getValue( $_product );
+                        if (!isset($vezes)) {
+                            $vezes = 1;
+                        }
+                        echo '<em class="installment"><strong>' . $vezes.'x</strong> de <strong>'.$_coreHelper->currency( $_product->getFinalPrice()/$vezes, true, false ) . "</strong> " . $this->__("sem juros") .'</em>';
+                        $_down_price = $_product->getPrice()  - $_product->getFinalPrice();
+                        //echo '<span class="economize">'.$_coreHelper->currency($_down_price,true,false).'</span>';
+                        ?>
+                    <?php endif?>
+                </div>
+
+
 
                 <div class="extra-info">
                     <?php echo $this->getReviewsSummaryHtml($_product, 'default', false)?>
@@ -86,7 +112,7 @@
 
                 <?php if ($_product->getShortDescription()):?>
                     <div class="short-description">
-                        <div class="std"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                        <div class="std"><?php //echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
                     </div>
                 <?php endif;?>
 
@@ -124,6 +150,10 @@
                     </div>
                 <?php endif; ?>
             </div>
+            <!--TuyenLN add product focus-->
+            <div class="rating-focus">
+                    <a href="#">Veja as opiniões de quem já comprou este produto e tire suas dúvidas</a>
+            </div>    
 
             <?php echo $this->getChildHtml('related_products') ?>
 
