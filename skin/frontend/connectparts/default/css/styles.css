@@ -3796,7 +3796,7 @@ margin-bottom: 10px;
       cursor: pointer;
       color: #DF6735;
       margin: 0 0 0 4px;
-      text-decoration: none;
+      text-decoration: none;display: inline-block;
       }
   }
 /* ============================================ *
